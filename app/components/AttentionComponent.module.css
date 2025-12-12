@@ -1,0 +1,22 @@
+/* components/AttentionComponent.module.css */
+
+/* 1. Definisikan Keyframes untuk animasi */
+@keyframes floatAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Bergerak ke atas 10px */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* 2. Buat class untuk menerapkan animasi */
+.floating {
+  animation-name: floatAnimation;
+  animation-duration: 3s; /* Durasi satu siklus animasi */
+  animation-iteration-count: infinite; /* Ulangi animasi selamanya */
+  animation-timing-function: ease-in-out; /* Membuat gerakan lebih natural */
+}
