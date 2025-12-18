@@ -55,75 +55,100 @@ export default function VillaCarousel({ data }: VillaCarouselProps) {
   ];
 
   return (
-    <div className="bg-card mt-20 flex flex-col md:flex-row rounded-4xl lg:mx-5">
-      {/* BAGIAN CAROUSEL */}
-      <div className="w-full h-full md:w-2/5 p-5">
-        <Carousel setApi={setApi}>
-          <CarouselContent>
+    <div className="bg-rose-200 border border-rose-300 shadow-2xl mt-20 flex flex-col md:flex-row rounded-[2.5rem] lg:mx-5 overflow-hidden">
+      
+      {/* BAGIAN KIRI: CAROUSEL GAMBAR */}
+      <div className="w-full md:w-1/2 lg:w-5/12 relative bg-gray-100">
+        <Carousel setApi={setApi} className="w-full h-full">
+          <CarouselContent className="h-[400px] md:h-[550px] ml-0"> 
+            {/* Height diset fix agar layout stabil */}
             {data.map((item, index) => (
-              <CarouselItem key={index} className="w-full h-full">
-                  <Card className="overflow-hidden p-0 rounded-2xl w-full h-full">
-                    <CardContent className="aspect-square p-0 relative w-full h-full overflow-hidden rounded-2xl border-0">
-                      <Image
-                        src={item.media_path ? `${baseUrl}/storage/${item.media_path}` : "/placeholder.jpg"}
-                        alt={item.name || "Room Image"}
-                        fill
-                        className="object-cover object-center"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
-                      {/**sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"*/}
-                    </CardContent>
-                  </Card>
+              <CarouselItem key={index} className="pl-0 w-full h-full">
+                <div className="relative w-full h-full group">
+                  <Image
+                    src={item.media_path ? `${baseUrl}/storage/${item.media_path}` : "/placeholder.jpg"}
+                    alt={item.name || "Room Image"}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  {/* Overlay Gradient Halus */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
+          
+          {/* Tombol Navigasi Custom */}
+          <div className="absolute bottom-6 right-6 flex gap-2 z-20">
+            <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-full border-none bg-white/20 hover:bg-white text-white hover:text-black backdrop-blur-md transition-all" />
+            <CarouselNext className="static translate-y-0 h-12 w-12 rounded-full border-none bg-white/20 hover:bg-white text-white hover:text-black backdrop-blur-md transition-all" />
+          </div>
         </Carousel>
       </div>
 
-      {/* BAGIAN DESKRIPSI DINAMIS */}
-      <div className="flex flex-col w-full md:w-1/2 p-5 md:p-10 transition-all duration-500 ease-in-out">
-        <div>
-            <h2 className="text-base font-semibold text-rose-700">Unforgettable Stays</h2>
-
-            <p className="mt-2 font-bold lg:text-3xl" id="carousel-title">
+      {/* BAGIAN KANAN: DESKRIPSI DINAMIS */}
+      <div className="flex flex-col w-full md:w-1/2 lg:w-7/12 p-8 md:p-12 lg:p-16 justify-center">
+        
+        {/* Header Statis */}
+        <div className="mb-6">
+          <span className="inline-block py-1 px-3 rounded-full bg-rose-50 text-rose-600 text-xs font-bold tracking-widest uppercase mb-3">
+              Unforgettable Stays
+          </span>
+          <h2 className="text-gray-700 font-medium text-lg lg:text-xl">
               Elegance in Every Room
-            </p>
+          </h2>
+        </div>
 
-            <p className="mt-4 font-bold lg:text-xl transition-opacity text-gray-600 duration-300">
-              {activeItem?.name || "Room Name"}
-            </p>
-
-            <p className="w-full text-sm lg:text-lg mt-2">
-              {activeItem?.deskription || "No description available."}
-            </p>
+        {/* Konten Dinamis dengan Animasi Fade-In */}
+        {/* Key ditambahkan di sini agar React me-render ulang animasi saat item berubah */}
+        <div key={activeItem?.id || "default"} className="animate-in fade-in slide-in-from-bottom-4 duration-500 fill-mode-forwards">
             
-            <div className="max-w-1/2 flex flex-wrap gap-2 mt-4">
-          
+            {/* Nama Ruangan */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              {activeItem?.name || "Room Name"}
+            </h1>
+
+            {/* Fasilitas (Badges) */}
+            <div className="flex flex-wrap gap-3 mb-8">
               {facilitiesConfig.map((item) => {
                 if (activeItem?.[item.key]) {
                     return (
                         <Badge
-                          key={item.key} // Wajib ada unique key saat mapping
-                          variant="secondary"
-                          className="bg-blue-500 text-white dark:bg-blue-600 hover:bg-blue-600 flex items-center gap-1"
+                          key={item.key}
+                          variant="outline"
+                          className="py-1.5 px-3 border-gray-200 text-gray-600 font-normal bg-gray-50/50 flex items-center gap-2 rounded-lg"
                         >
-                          <BadgeCheckIcon/>
+                          <BadgeCheckIcon className="w-4 h-4 text-rose-500"/>
                           {item.label}
                         </Badge>
                     );
                 }
-                return null; // Jika false, jangan render apa-apa
+                return null;
               })}
-
             </div>
-        </div>
-        
-        <div className="flex justify-end mt-auto">
-          <BookingCard content={"Booking Now"}> </BookingCard>
+
+            {/* Deskripsi */}
+            <p className="text-gray-600 leading-relaxed text-base lg:text-lg mb-10 border-l-4 border-rose-200">
+              {activeItem?.deskription || "Experience the ultimate comfort in our carefully designed rooms, featuring modern amenities and breathtaking views."}
+            </p>
+
+            {/* Footer / CTA */}
+            <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
+              <div className="flex-1">
+                  <p className="text-sm text-gray-400">Harga mulai dari</p>
+                  <p className="text-xl font-bold text-gray-600">IDR 500k<span className="text-sm font-normal text-gray-400">/malam</span></p>
+              </div>
+              <div className="flex-none">
+                  <BookingCard content={"Book Now"} className="bg-gray-900 text-rose-600 px-8 py-6 rounded-xl hover:bg-rose-600 transition-colors shadow-lg shadow-gray-200"> 
+                  </BookingCard>
+              </div>
+            </div>
+
         </div>
       </div>
-    </div>
+    </div>  
+
+    
   )
 }

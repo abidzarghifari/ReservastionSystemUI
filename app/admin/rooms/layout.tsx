@@ -12,7 +12,7 @@ export default function Layout({
   
   return (
 	<>
-    <div className="container mx-auto py-5">
+    <div className="container max-w-6xl mx-auto py-5">
       <ToggleGroup type="multiple" variant="outline">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <Link href="/admin/rooms/rooms">Rooms</Link>
@@ -22,7 +22,7 @@ export default function Layout({
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
-		{children}
+    {children}
 	</>
   );
 }

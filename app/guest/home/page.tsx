@@ -31,77 +31,100 @@ export default async function Page(){
 
     return (
         <>
-            {/* SECTION 1: HERO / INTRO */}
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8">
-                <div className='hidden md:block p-5 text-gray-200'>
-                    <h1 className="md:text-l lg:text-xl">(01)</h1>
-                    <h1 className="md:text-l lg:text-xl">About Us</h1>
-                    {/* Saya perbaiki sedikit grammar bahasa Inggrisnya */}
-                    <h1 className="md:text-xl lg:text-4xl">
-                        <strong>We</strong> treat you to an <strong>unforgettable</strong> stay. 
-                        We blend central <strong>convenience</strong> with <strong>peaceful</strong> tranquility.
-                    </h1>
-                    <div className='mt-15 justify-self-end'>
-                        <Button className="rounded-full bg-transparent border-gray-300 border-1 text-gray-200 hover:bg-rose-400 hover:border-transparent hover:text-black">
-                            Explore
-                        </Button> 
-                    </div>
-                </div>
-                <div className='md:hidden p-1'>
-                    <h2 className='text-3xl'>About <strong>Us</strong></h2>
-                </div>
-                <div className="hidden md:flex md:p-5 items-center gap-1">
-                    <LocCard backgroundImage={"/room2. Jawa Tengah"} title={"warm room"} description={"most pampering service for you"} footer={" "} className="flex-1 flex-grow-[5] hover:flex-grow-[6] transition-all duration-500 relative rounded-xl bg-border p-4 h-full bg-bottom bg-cover group" title="Dieng" description="Best view point"/>
-                    <LocCard backgroundImage={"/telaga.jpeg"} title={"Cebong Lake"} description={"morning that starts with a warm cup of coffee, on the edge of a lake"} footer={"1 minute walk"} className="flex-1 hover:flex-grow-[5] transition-all duration-500 relative rounded-xl bg-border p-4 h-full bg-bottom bg-cover group"/>
-                    <LocCard backgroundImage={"/sikunir.jpeg"} title={"Sikunir Hill"} description={"the best sunrises in Southeast Asia."} footer={"8 minute walk"} className="flex-1 hover:flex-grow-[5] transition-all duration-500 relative rounded-xl bg-border p-4 h-full bg-bottom bg-cover group"/>
-                    <LocCard backgroundImage={"/desadieng.jpeg"} title={"Dieng village in the morning"} description={"Morning begins with a painting of mist, and a shy, warming sun."} footer={"just take a walk"} className="flex-1 hover:flex-grow-[5] transition-all duration-500 relative rounded-xl bg-border p-4 h-full bg-bottom bg-cover group"/>
-                </div>
-            </div>
+            
+                {/* BAGIAN ATAS: STATS & TEXT */}
+                <div className='max-w-7xl mx-auto md:px-6 py-10 md:py-10 lg:py-10 pb-0 md:pb-0 lg:pb-6'>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                        
+                        {/* Kiri: Teks & Penjelasan (Urutan ditukar di Desktop agar flow baca lebih enak: Kiri Teks -> Kanan Bukti/Stats) */}
+                        <div className="flex flex-col gap-6 order-1">
+                            <div className="flex items-center gap-3 text-rose-400">
+                                <span className="h-[1px] w-10 bg-rose-400"></span>
+                                <span className="text-sm font-medium tracking-widest uppercase">Tentang Kami</span>
+                            </div>
+                            
+                            <h2 className="text-3xl md:text-5xl lg:text-5xl font-medium leading-tight text-balance">
+                                Kenyamanan Anda Adalah <span className="text-rose-400">Prioritas</span> Utama.
+                            </h2>
+                            
+                            <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-5/6">
+                                Nikmati pengalaman menginap berkelas dengan harga yang tetap affordable. Kami memadukan keindahan alam Sikunir dengan fasilitas modern.
+                            </p>
 
-            {/* SECTION 2: CAROUSEL (Client Component disisipkan disini) 
-            <div className="bg-card mt-20 flex flex-col md:flex-row rounded-4xl lg:mx-5">
-                
-            </div>*/}
-            <VillaCarousel data={data} />
+                            {/* List point kecil (Opsional) */}
+                            <ul className="flex gap-6 mt-2 text-sm text-zinc-300 font-medium">
+                                <li className="flex items-center gap-2">✓ Wi-Fi Kencang</li>
+                                <li className="flex items-center gap-2">✓ Air Hangat</li>
+                            </ul>
+                        </div>
 
-            {/* SECTION 3: STATS & FOOTER */}
-            <div className="bg-card rounded-4xl mt-10 p-5 lg:mx-5">
-                <div className='grid grid-cols-2 max-w-6xl mx-auto py-8 md:py-10 lg:py-20 text-white'>
-                        <div className="flex items-center justify-end">
-                            <div className='grid grid-cols-2 gap-2 rounded-3xl p-5 w-full md:w-1/2'>
-                                {[1, 2, 3, 4].map((_, i) => (
-                                    <div key={i} className="justify-items-center p-3 backdrop-blur-2xl backdrop-grayscale bg-rose-50/15 rounded-2xl">
-                                        <h1 className="font-bold text-xl">150+</h1>
-                                        <p className="text-sm">Reviews</p>
+                        {/* Kanan: Grid Statistik */}
+                        <div className="order-2">
+                            <div className='grid grid-cols-2 gap-4'>
+                                {[
+                                    { num: "2.5k+", label: "Tamu Bahagia" },
+                                    { num: "4.9", label: "Rating Google" },
+                                    { num: "150+", label: "Review Asli" },
+                                    { num: "24/7", label: "Layanan" }
+                                ].map((stat, i) => (
+                                    <div key={i} className={`
+                                        flex flex-col justify-center items-center p-6 
+                                        backdrop-blur-md bg-white/5 
+                                        rounded-2xl transition-transform duration-300 hover:-translate-y-1 hover:bg-white/10
+                                        ${i === 1 || i === 3 ? 'mt-8' : 'mb-8'} 
+                                    `}> 
+                                    {/* Logic margin diatas membuat efek 'staggered' / naik turun yang artistik */}
+                                        <h1 className="font-medium text-3xl md:text-4xl text-rose-400 mb-1">{stat.num}</h1>
+                                        <p className="text-xs text-zinc-400 uppercase tracking-wide">{stat.label}</p>
                                     </div>
                                 ))}           
                             </div>
                         </div>
-                        <div className="grid items-center p-5 md:w-1/2">
-                            <h1 className="text-sm md:text-sm lg:text-lg">#about us</h1>
-                            <h1 className="text-sm md:text-lg lg:text-xl"><strong>We prioritize your comfort above all else.</strong></h1>
-                            <span className="text-xs md:text-sm text-gray-400">Experience luxury living with affordable pricing.</span>
-                        </div>
-                        
-                </div>
-                <div className="relative rounded-4xl bg-bottom p-10 pt-50 lg:pt-70 overflow-hidden">
-                    <Image 
-                        src="/bgcabin3.webp"
-                        alt="Background"
-                        fill
-                        className="object-cover z-0"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10"></div>
-                    <div className="relative z-20 backdrop-blur-3xl backdrop-grayscale bg-black/20 w-full md:w-1/2 mx-auto p-8 rounded-3xl text-center">
-                        <p className="text-white text-sm md:text-base">Treat your family to an unforgettable stay. Located centrally yet peacefully.</p>
-                        <Button className="rounded-full mt-5 text-white bg-rose-400 hover:bg-rose-500 hover:text-white">Contact Us</Button>
                     </div>
                 </div>
-            </div>
-            <div className="flex justify-center mt-15">
-					<span className="text-sm sm:text-center dark:text-rose-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">Dikayoda</a>. All Rights Reserved.
-					</span>
-			</div>
+		
+		<div className="lg:max-w-6xl mx-auto lg:px-5 pb-20">
+			<VillaCarousel data={data} />
+		</div>	
+		
+		<div className="max-w-md mx-auto pb-20">
+			<p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                                Nikmati pengalaman menginap berkelas dengan harga yang tetap affordable. Kami memadukan keindahan alam Sikunir dengan fasilitas modern.
+                        </p>
+			<p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                                Nikmati pengalaman menginap berkelas dengan harga yang tetap affordable. Kami memadukan keindahan alam Sikunir dengan fasilitas modern.
+                        </p>
+
+
+		</div>
+                {/* BAGIAN BAWAH: CTA IMAGE */}
+                <div className="relative w-full h-[500px] group overflow-hidden rounded-t-3xl">
+                    <Image 
+                        src="/bgcabin3.webp"
+                        alt="Suasana Villa Malam Hari"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+
+                    {/* Konten CTA */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-10">
+                        <div className="max-w-2xl space-y-2">
+                            <h3 className="text-2xl md:text-4xl font-medium text-white leading-tight">
+                                Berikan hadiah liburan terbaik <br/>untuk keluarga Anda.
+                            </h3>
+                            <p className="text-zinc-300 text-xs md:text-sm max-w-lg mx-auto">
+                                Akses mudah ke segala tempat wisata dengan suasana istirahat yang menenangkan. Jangan sampai kehabisan slot.
+                            </p>
+                            <Button className="rounded-full px-8 py-6 text-base font-medium bg-rose-500 hover:bg-rose-600 text-white shadow-lg shadow-rose-500/30 transition-all mt-4">
+                                Hubungi Kami
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            
+            
         </>
     );
 }

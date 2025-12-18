@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import AppInitializer from "./components/appInitializer";
+import { Lora } from "next/font/google";
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-slab", // <--- INI PENTING (Nama Variable)
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Azzahra Cabin House",
@@ -25,7 +32,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className={`${lora.variable} antialiased`}>
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
           {children}
         <Toaster />

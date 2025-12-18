@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { ExpandableText } from "@/app/components/expandableText"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -136,7 +137,7 @@ export const columns: ColumnDef<RoomTypes>[] = [
     cell: ({ row }) => {
       const status = row.getValue("ac");
       return (
-        <div className="text-center text-xl">
+        <div className="text-center text-sm">
           {status ? (
             <span className="text-green-700">✔</span> 
           ) : (
@@ -153,7 +154,7 @@ export const columns: ColumnDef<RoomTypes>[] = [
     cell: ({ row }) => {
       const status = row.getValue("tv");
       return (
-        <div className="text-center text-xl">
+        <div className="text-center text-sm">
           {status ? (
             <span className="text-green-700">✔</span> 
           ) : (
@@ -170,7 +171,7 @@ export const columns: ColumnDef<RoomTypes>[] = [
     cell: ({ row }) => {
       const status = row.getValue("heater");
       return (
-        <div className="text-center text-xl">
+        <div className="text-center text-sm">
           {status ? (
             <span className="text-green-700">✔</span> 
           ) : (
@@ -187,7 +188,7 @@ export const columns: ColumnDef<RoomTypes>[] = [
     cell: ({ row }) => {
       const status = row.getValue("free_breakfast");
       return (
-        <div className="text-center text-xl">
+        <div className="text-center text-sm">
           {status ? (
             <span className="text-green-700">✔</span> 
           ) : (
@@ -204,7 +205,7 @@ export const columns: ColumnDef<RoomTypes>[] = [
     cell: ({ row }) => {
       const status = row.getValue("free_loundry");
       return (
-        <div className="text-center text-xl">
+        <div className="text-center text-sm">
           {status ? (
             <span className="text-green-700">✔</span> 
           ) : (
@@ -221,7 +222,7 @@ export const columns: ColumnDef<RoomTypes>[] = [
     cell: ({ row }) => {
       const status = row.getValue("wifi");
       return (
-        <div className="text-center text-xl">
+        <div className="text-center text-sm">
           {status ? (
             <span className="text-green-700">✔</span> 
           ) : (
@@ -233,9 +234,19 @@ export const columns: ColumnDef<RoomTypes>[] = [
   },
 
   {
-	accessorKey: "deskription",
-	header: "Description",
-  },
+        accessorKey: "deskription",
+        header: "Description",
+        cell: ({ row }) => {
+            const value = row.getValue("deskription") as string;
+            
+            // Gunakan komponen terpisah, atur limit karakter sesuai kebutuhan (misal 40)
+            return (
+                <div className="max-w-80">
+                  <ExpandableText text={value} limit={40} />
+                </div>
+            );
+        },
+   },
 
   {
 	id: "actions",
@@ -252,14 +263,9 @@ export const columns: ColumnDef<RoomTypes>[] = [
 		  </DropdownMenuTrigger>
 		  <DropdownMenuContent align="end">
 			<DropdownMenuLabel>Actions</DropdownMenuLabel>
-			<DropdownMenuItem
-			  onClick={() => navigator.clipboard.writeText(payment.id)}
-			>
-			  Copy payment ID
-			</DropdownMenuItem>
 			<DropdownMenuSeparator />
-			<DropdownMenuItem>View customer</DropdownMenuItem>
-			<DropdownMenuItem>View payment details</DropdownMenuItem>
+			<DropdownMenuItem>Update</DropdownMenuItem>
+			<DropdownMenuItem>Delete</DropdownMenuItem>
 		  </DropdownMenuContent>
 		</DropdownMenu>
 	  )

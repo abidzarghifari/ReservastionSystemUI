@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import AppFooter from '@/app/components/appfooter';
 
 // Varian untuk animasi masuk dari konten utama
 export const mainContentVariants = {
@@ -34,7 +33,6 @@ export default function HomeLayout({
 			<div className='md:px-10'>
 				{children}
 			</div>
-			<AppFooter></AppFooter>
 		</motion.div>
 	</>
   );

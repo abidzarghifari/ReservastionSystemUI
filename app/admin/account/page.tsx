@@ -6,7 +6,7 @@ export default function Page(){
 	return (
 		<>					  
 							<div className="pb-12">
-								<div className="lg:max-w-7xl mx-auto space-y-6">
+								<div className="lg:max-w-6xl mx-auto space-y-6">
 									<h2 className="pt-5 text-2xl">Profile</h2>
 									<div className="p-4 sm:p-8 rounded-xl border">
 										<div className="max-w-xl">

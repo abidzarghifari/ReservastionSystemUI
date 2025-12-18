@@ -9,15 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useContext } from "react";
 import { useState, useEffect } from "react";
-import { TfiThemifyLogo } from "react-icons/tfi";
-import { CiBoxList } from "react-icons/ci";
 import Link from "next/link";
 import {NavigationMenu,NavigationMenuList,} from "@/components/ui/navigation-menu"
 import { LogoutButton } from "./logoutButton";
 import { mainContentVariants } from "@/app/components/ContentVariant";
 import { motion } from 'framer-motion';
 import { AuthStateContext } from "@/app/components/AuthContex";
-
+import { HiMenuAlt4 } from "react-icons/hi";
 
 export default function Navbar(){
 
@@ -52,21 +50,23 @@ export default function Navbar(){
           initial="initial"
           animate="animate"
         >
+
           <NavigationMenu 
-            className={`rounded-full max-w-2xl md:max-w-4xl mx-auto py-0 px-4 md:py-1 md:px-6 transition-colors duration-300 ${isScrolled ? 'backdrop-blur-xl backdrop-grayscale bg-rose-400/60 shadow-lg' : 'bg-transparent'}`}
+            className={`rounded-full mx-auto p-2 md:p-3 transition-colors duration-300 ${isScrolled ? 'backdrop-blur-xl backdrop-grayscale bg-black/10 shadow-lg' : 'text-black/40 bg-white/20'}`}
           >
-                <TfiThemifyLogo size={50}/>
-                <div className="hidden md:flex mx-auto">
-                  <NavigationMenuList>
-                    <Link className="rounded-full hover:bg-rose-300/30  p-2" href="/guest/home">Home</Link>
-                    <Link className="rounded-full hover:bg-rose-300/30 p-2" href="/guest/reservations/willCome">Reservations</Link>
-                    <Link className="rounded-full hover:bg-rose-300/30 p-2" href="/guest/findUs">Find Us</Link>
+
+                <div className="">
+                  <NavigationMenuList className="">
+                    <Link className="rounded-full hover:bg-white/10  p-1 px-2 md:p-2 md:px-5" href="/guest/home">Home</Link>
+                    <Link className="rounded-full hover:bg-white/10 p-1 px-2 md:p-2 md:px-5" href="/guest/reservations/willCome">Reservations</Link>
+                    <Link className="rounded-full hover:bg-white/10 p-1 px-2 md:p-2 md:px-5" href="/guest/findUs">Find Us</Link>
                   </NavigationMenuList>                  
                 </div>
-                <div className="hidden md:flex">
+
+                <div className="">
                   <DropdownMenu>
-                    <DropdownMenuTrigger className="flex items-center rounded-full hover:bg-rose-300/30 p-1">
-                      <CiBoxList size={30}/>
+                    <DropdownMenuTrigger className="flex items-center rounded-full hover:bg-white/10 p-1 px-3 md:px-6 ">
+                      <HiMenuAlt4 size={30}/>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       {
@@ -95,6 +95,8 @@ export default function Navbar(){
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
+                
+                {/** 
                 <div className="md:hidden ml-auto">
                   <DropdownMenu>
                     <DropdownMenuTrigger className="flex items-center rounded-full hover:bg-rose-300 p-1"><CiBoxList size={20}/></DropdownMenuTrigger>
@@ -127,7 +129,7 @@ export default function Navbar(){
                       }
                     </DropdownMenuContent>
                   </DropdownMenu>                 
-                </div>
+                </div>*/}
                 
           </NavigationMenu>
       </motion.div>

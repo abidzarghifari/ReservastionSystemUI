@@ -16,6 +16,7 @@ import { FaAddressBook } from "react-icons/fa";
 import { MdAccountCircle } from "react-icons/md";
 import { RiLogoutCircleFill } from "react-icons/ri";
 import { LogoutButton } from "./logoutButton";
+import { AlertWithActions } from "../../components/alertWithActions";
 // Menu items.
 const items = [
   {
@@ -68,6 +69,9 @@ export function AdminSidebar() {
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup className="mt-auto">
+              <AlertWithActions/>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>

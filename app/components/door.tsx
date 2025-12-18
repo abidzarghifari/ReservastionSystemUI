@@ -37,7 +37,7 @@ export default function Door({ onOpen }) {
                }}
                style={{ backgroundImage: "url('/bgcabin4.webp')" }}
           >
-             <div className="absolute inset-0 bg-gradient-to-t from-black/100 to-transparent"></div>
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
  
              <motion.div className="absolute top-7 left-7 md:left-15 text-5xl lg:text-7xl text-white"
                 variants={mainContentVariants}

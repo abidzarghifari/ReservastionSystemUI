@@ -390,7 +390,7 @@ export default function BookingCard({
 						) : authState.authStatus === 'user' ? (
 							content ? (
 								<DialogTrigger asChild onClick={(event) => event.stopPropagation()}>
-									<button className="rounded-full p-3 px-4 bg-transparent border-gray-300 border hover:bg-rose-400 hover:border-transparent hover:text-white transition-colors">{content}</button>
+									<button className="rounded-full p-3 px-4 bg-rose-400 text-white hover:bg-rose-500 hover:border-transparent hover:text-white transition-colors">{content}</button>
 								</DialogTrigger>
 							) : (
 								<DialogTrigger className='p-0' asChild onClick={(event) => event.stopPropagation()}>
@@ -402,7 +402,7 @@ export default function BookingCard({
 							content ? (
 								<Link 
 								href="/auth/guest/login" 
-								className="rounded-full p-3 px-4 bg-transparent border-gray-300 border hover:bg-rose-400 hover:border-transparent hover:text-white transition-colors"
+								className="rounded-full p-3 px-4 bg-rose-400 text-white hover:bg-rose-500 hover:border-transparent hover:text-white transition-colors"
 								onClick={(event) => event.stopPropagation()} 
 								>
 									{content}

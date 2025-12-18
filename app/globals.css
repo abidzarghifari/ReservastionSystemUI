@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Pinyon+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Pinyon+Script&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
@@ -121,6 +126,25 @@
   }
 }
 
+@layer utilities {
+  .font-marcellus {
+    font-family: 'Marcellus', serif;
+  }
+  .font-pinyon {
+    font-family: 'Pinyon Script', cursive;
+    /* Font script kadang butuh sedikit penyesuaian ukuran agar seimbang */
+    font-size: 1.1em; 
+  }
+  .font-cormorant {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-forum {
+   font-family: 'Forum', cursive; /* Forum dikategorikan cursive/serif di beberapa sistem, tapi bentuknya serif antik */
+  }
+  .font-slab {
+    font-family: var(--font-slab), serif;
+  }
+}
 /* Kustomisasi Scrollbar untuk browser berbasis WebKit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 5px; /* Lebar scrollbar */

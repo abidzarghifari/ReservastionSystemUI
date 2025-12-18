@@ -34,10 +34,6 @@ export default function Layout({
                             </div>
                             <main>
                               {children}        
-                              <div className="flex justify-center mt-15">
-                                    <span className="text-sm sm:text-center dark:text-rose-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">Dikayoda</a>. All Rights Reserved.
-                                    </span>
-                              </div>
                             </main>
                         </div>
       </motion.div>

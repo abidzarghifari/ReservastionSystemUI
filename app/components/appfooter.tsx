@@ -46,7 +46,7 @@ export default function AppFooter(){
 					</div>
 				</div>
 			</div>
-			<hr className="sm:mx-auto lg:my-8 mt-5" />
+			<hr className="sm:mx-auto lg:my-8 mt-5 border-none" />
 			<div className="sm:flex sm:items-center sm:justify-between mt-5">
 				<span className="text-sm sm:text-center dark:text-rose-400">© 2025 <a href="https://flowbite.com/" className="hover:underline">Dikayoda</a>. All Rights Reserved.
 				</span>

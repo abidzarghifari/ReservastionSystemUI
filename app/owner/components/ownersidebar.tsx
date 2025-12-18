@@ -13,6 +13,7 @@ import Link from "next/link";
 import { MdAssessment } from 'react-icons/md';
 import { IoPeople } from "react-icons/io5";
 import { MdAccountCircle } from "react-icons/md";
+import { AlertWithActions } from "@/app/components/alertWithActions";
 
 const items = [
   {
@@ -60,6 +61,9 @@ export function OwnerSidebar() {
 			</SidebarMenu>
 		  
 		  </SidebarGroupContent>
+		</SidebarGroup>
+		<SidebarGroup className="mt-auto">
+			<AlertWithActions/>
 		</SidebarGroup>
 	  </SidebarContent>
 	</Sidebar>
