@@ -24,7 +24,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-
+import { IoIosPrint } from "react-icons/io";
+import PrintModule from "./report";
 
 
 export default function Page(){
@@ -101,7 +102,7 @@ export default function Page(){
 
 						<div className="relative flex flex-col justify-end h-full p-6 text-white">
 							<div className="p-6 rounded-2xl bg-black/30 backdrop-blur-lg border">
-								<h2 className="text-3xl font-bold">Selamat Datang, Admin!</h2>
+								<h2 className="text-3xl font-bold">Hello Bos!</h2>
 								<p className="mt-2 text-white/80">Berikut adalah performa villa Anda bulan ini.</p>
 								
 								<div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4">
@@ -149,6 +150,22 @@ export default function Page(){
 													<p className="text-lg font-semibold">{report.upcoming_guests}</p>
 												)
 											}
+										</div>
+									</div>
+									<div className="flex items-center gap-3">
+										<div className="bg-white/20 p-2 rounded-lg">
+											<IoIosPrint />
+										</div>
+										<div>
+																											 {
+												isLoadingReport ? (
+													<Skeleton className="h-4 w-[50px]" />
+												):(
+													<PrintModule data={report}></PrintModule>
+
+												)
+											}
+											
 										</div>
 									</div>
 								</div>

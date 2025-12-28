@@ -24,8 +24,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-
-
+import { IoIosPrint } from "react-icons/io";
+import PrintModule from "./report";
 
 export default function Page(){
 	const [report, setReport] = useState({});
@@ -151,6 +151,23 @@ export default function Page(){
 											}
 										</div>
 									</div>
+									<div className="flex items-center gap-3">
+										<div className="bg-white/20 p-2 rounded-lg">
+											<IoIosPrint />
+										</div>
+										<div>
+																											 {
+												isLoadingReport ? (
+													<Skeleton className="h-4 w-[50px]" />
+												):(
+													<PrintModule data={report}></PrintModule>
+
+												)
+											}
+											
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>

@@ -52,7 +52,7 @@ export default function GuestLayout({
 					</div>
 					<div className="fixed bottom-10 right-7 z-50">
 						<AttentionComponent>
-							<div className='bg-card rounded-full hover:bg-rose-300/30 p-4'>
+							<div className='bg-rose-800 rounded-full hover:bg-rose-300/30 p-4'>
 								<BookingCard></BookingCard>
 							</div>
 						</AttentionComponent>
@@ -67,7 +67,7 @@ export default function GuestLayout({
 							style={{ backgroundImage: "url('/bgcabin3.webp')" }}
 						>
 							{/*<div className="absolute fixed inset-x-0 top-0 h-full backdrop-blur-2xl backdrop-grayscale bg-rose-500/50  z-0"></div>*/}
-						<div className="absolute inset-0 bg-black/20"></div>		
+						<div className="absolute inset-0 bg-black/10"></div>		
      					    	<div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
 
 							<motion.div

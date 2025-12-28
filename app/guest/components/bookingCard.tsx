@@ -23,6 +23,7 @@ import { differenceInCalendarDays, format } from "date-fns";
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { BiSolidBookAdd } from "react-icons/bi";
 
 /**
 =========== Form Schema ================================
@@ -394,7 +395,7 @@ export default function BookingCard({
 								</DialogTrigger>
 							) : (
 								<DialogTrigger className='p-0' asChild onClick={(event) => event.stopPropagation()}>
-									<button className='p-0'><LuNotebookPen size={30}/></button>
+									<button className='p-0'><BiSolidBookAdd size={30}/></button>
 								</DialogTrigger>
 							)
 
@@ -409,7 +410,7 @@ export default function BookingCard({
 								</Link>
 							) : (
 								<div>
-									<Link href="/auth/guest/login"><LuNotebookPen size={30}/></Link>
+									<Link href="/auth/guest/login"><BiSolidBookAdd size={30}/></Link>
 								</div>
 							)
 							
@@ -551,7 +552,7 @@ export default function BookingCard({
 									)}
 								/>
 
- 								<Button type="submit" className="w-full bg-rose-400" disabled={isSubmitting}>
+ 								<Button type="submit" className="w-full rounded-full" disabled={isSubmitting}>
 									{isSubmitting && (
 										<Loader2 className="mr-2 h-4 w-4 animate-spin" />
 									)}
